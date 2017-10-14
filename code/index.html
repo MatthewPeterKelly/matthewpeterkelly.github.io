@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+		<link rel="stylesheet" type="text/css" href="../styleDark.css" />
+		<!--<link href="http://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet" type="text/css">-->
+		<link href="http://fonts.googleapis.com/css?family=Merienda+One" rel="stylesheet" type="text/css">
+		<title>MPK_tutorials</title>
+		<script>
+		(function(i, s, o, g, r, a, m) {
+		i['GoogleAnalyticsObject'] = r;
+		i[r] = i[r] || function() {
+		(i[r].q = i[r].q || []).push(arguments)
+		}, i[r].l = 1 * new Date();
+		a = s.createElement(o),
+		m = s.getElementsByTagName(o)[0];
+		a.async = 1;
+		a.src = g;
+		m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-64560597-1', 'auto');
+		ga('send', 'pageview');
+		</script>
+	</head>
+	<body>
+		<h1>Code</h1>
+		<div class="navBlock">
+			<a href="../index.html" class="navLink">  &#8592; Home </a>	<br>
+			<a href="../research/index.html" class="navLink">  &#8592; Research </a><br>
+			<a href="../tutorials/index.html" class="navLink"> &#8592; Tutorials </a><br>
+		</div>
+		<div class="abstract">
+			This page has links to a variety of small coding projects that I completed while learning some of the basic computer skills for robotics.
+		</div>
+		<div class="signature">
+			- Matthew Kelly
+		</div>
+		<h2>Simulation</h2>
+		<a class="navLink" target="blank" href="https://github.com/MatthewPeterKelly/dscTutorials/tree/master/LagrangeMechanics">
+			&#8592;  Lagrange mechanics
+		</a>
+		<p>
+			A few tutorials, written in Matlab, that demonstrate how to use the Langrange Equations to derive the equation of motion for a variety of systems, including:
+		</p>
+		<ul>
+			<li><a href="https://github.com/MatthewPeterKelly/dscTutorials/tree/master/LagrangeMechanics/simpleHarmonicOscillator">
+			simple harmonic oscillator </a></li>
+			<li><a href="https://github.com/MatthewPeterKelly/dscTutorials/tree/master/LagrangeMechanics/singlePendulum">
+			single	pendulum</a></li>
+			<li><a href="https://github.com/MatthewPeterKelly/dscTutorials/tree/master/LagrangeMechanics/doublePendulum">
+			double	pendulum</a></li>
+		</ul>
+		<a class="navLink" target="blank"  href="https://github.com/MatthewPeterKelly/dscTutorials/tree/master/bouncingBall">
+			&#8592;  Bouncing Ball
+		</a>
+		<p>
+			A ball bouncing around on hilly terrain. This simple simulation is designed for learning event detection with ode45 in Matlab.
+		</p>
+		
+		<a class="navLink" target="blank"   href="https://github.com/MatthewPeterKelly/dscTutorials/tree/master/toppling_stick">
+			&#8592; Toppling Stick
+		</a>
+		<p>
+			A simulation of a stick toppling from rest. Inspired by Tad Mcgeer's 1989 paper: <em>Wobbling, toppling, and forces of contact</em>. My simulation is based on a finite state machine, using ode45 for integration and event detection. I used this simulation to study the effects of coefficient of friction and moment of inertia; the results are discussed <a href="../research/MattKelly__Simulations_with_Sliding_and_Intermittent_Contact.pdf">
+			here. </a>
+		</p>
+		<a class="navLink" target="blank"  href="https://github.com/MatthewPeterKelly/dscTutorials/tree/master/FancyDoublePendulum">
+			&#8592; Three masses
+		</a>
+		<p>
+			A system of three point masses in 2D. The center mass is connected to the other two with arbitrary force and torque actuators. This is the basis for another simple model of walking: a point mass at each foot, and at the hip. The simulation supports many different contact configurations, as shown in this simple test <a href="http://youtu.be/zr17IAtuDEY">animation</a>.
+		</p>
+		
+		<h2> Trajectory Optimization</h2>
+		
+		<a class="navLink" target="blank"  href="https://github.com/MatthewPeterKelly/TrajOpt">
+			&#8592; TrajOpt - Trajectory Optimization Library (Matlab)
+		</a>
+		<p>
+			I wrote a trajectory optimization library for Matlab, as a way to collect many of the things that I've learned about trajectory optimization. In particular, I tried to make the code readable, and I've also made it easy to compare different transcription methods. For example, it makes it easier to understand the trade-offs between multiple shooting and collocation, or whether it is worth it to use a high-order method.
+		</p>
+		<a class="navLink" target="blank"  href="https://github.com/MatthewPeterKelly/dscTutorials/tree/master/DoublePendulumWalker">
+			&#8592; Double	Pendulum Walker
+		</a>
+		
+		<p>
+			This code uses <a href="http://www.gpops2.com/">GPOPS</a> to find an optimal walking trajectory for a double pendulum model of walking.
+		</p>
+		<a class="navLink" target="blank"  href="https://github.com/MatthewPeterKelly/dscTutorials/tree/master/PendulumCart_SwingUp">
+			&#8592; Cart-Pole	Swing-Up
+		</a>
+		
+		<p>
+			Solves the swing-up problem for pendulum handing from a cart. There is a motor in the cart, but the pendulum hangs free. I solve the problem using three transcription algorithms: Multiple shooting, Orthogonal Collocation, and <a href="http://www.gpops2.com/">GPOPS</a>. The differences between these methods are discussed <a href="files/MattKelly__Transcription_Methods_for_Trajectory_Optimization.pdf">here</a>.
+		</p>
+		<h2>Miscellaneous</h2>
+		<a class="navLink" target="blank"  href="https://github.com/MatthewPeterKelly/dscTutorials/tree/master/MDP_Pendulum">
+			&#8592; Dynamic Programming: Pendulum
+		</a>
+		
+		<p>Finds an optimal policy for an inverted pendulum, by converting the continuous system to a Markov Decision Process (MDP) and solving the Bellman equation using value iteration.</p>
+		
+		<a class="navLink" target="blank"  href="https://github.com/MatthewPeterKelly/dscTutorials/tree/master/tractorTrailer">
+			&#8592; Tractor Trailer Controller
+		</a>
+		
+		<p>
+			I wrote this simulation for my Q-exam <a href="../research/Q_Exam_Presentation.pdf"> presentation </a>. It has partial sensing of its state using noisy sensors and control of the steering angle and travel speed (both of which were bounded). The states is estimated using an extended Kalman filer (EKF) and then controlled using a discrete linear quadratic regulator (dLQ), linearized about the current state estimate.
+		</p><p>
+		Animations: <a href="http://www.youtube.com/watch?v=KV8_1eeShVg"> One </a>, <a href="http://www.youtube.com/watch?v=rdBmSTarx3U"> Two </a>, <a href="http://www.youtube.com/watch?v=9rnEmSdOHpk"> Three </a>
+	</p>
+	
+	<a class="navLink" target="blank"  href="https://github.com/MatthewPeterKelly/dscTutorials/tree/master/Continuous_Finite_LQR">
+		&#8592;  LQR Trajectory Tracking
+	</a>
+	
+	<p>A tutorial for using time-varying LQR to stabilize a non-linear trajectory. The code compares the time-varying gains to the infinite horizon gains. It also computes an approximation of the reachable set, using two different methods.</p>
+	<a class="navLink" target="blank"  href="https://github.com/MatthewPeterKelly/dscTutorials/tree/master/chebyshevPolynomials">
+		&#8592; Chebyshev Polynomials
+	</a>
+	<p>
+		A small library of functions that use Chebyshev polynomials for function approximation and solving differential equations. These functions are also used in my orthogonal collocation trajectory optimization program. The background methematics for this library are largely taken from a book by Lloyd Trefethen: <a href="https://people.maths.ox.ac.uk/trefethen/books.html">Approximation
+		Theory and Approximation Practice</a>.
+	</p>
+	<a class="navLink" target="blank"  href="https://github.com/MatthewPeterKelly/dscTutorials/tree/master/cmaes_controlDesign">
+	&#8592; CMAES Demo</a>
+	<p>
+		This code uses Covariance Matrix Adaptation Evolutionary Strategy (<a href="https://www.lri.fr/~hansen/cmaesintro.html">CMAES</a>) to solve for the gains in a simple non-linear controller.
+	</p>
+	<a class="navLink" target="blank"  href="https://github.com/MatthewPeterKelly/dscTutorials/tree/master/smoothing">
+		&#8592; Function Smoothing
+	</a>
+	<p>This code is used to create smooth versions of commonly used discontinuous functions (max,min,abs,ramp,clamp...). There are two methods for smoothing that are used: exponential, and polynomial.</p>
+	
+	<h2>Java Libraries</h2>
+	<a class="navLink" target="blank"  href="https://github.com/MatthewPeterKelly/myJavaPkgs/tree/master/mpk_gui">
+		&#8592; Simple	GUI Classes
+	</a>
+	
+	<p>This package contains a few functions for making simple 2D scientific plots and animations based on the standard java.awt and java.swing packages. It also includes some code for getting the frame-rate of an animation correct, as well as linking buttons to parameters in an animation.</p>
+	
+	<a class="navLink" target="blank"  href="https://github.com/MatthewPeterKelly/myJavaPkgs/tree/master/mpk_dsc">
+		&#8592; DynamicalSystems and Control
+	</a>
+	<p>A few functions that I've used in my Java simulation libraries for doing simulations of walking robots. Most code is not posted, but I have included a few utility classes, such as a Butterworth filter.</p>
+	<a class="navLink" target="blank"  href="https://github.com/MatthewPeterKelly/myJavaPkgs/tree/master/examples">
+		&#8592; Examples
+	</a>
+	<p>A few executable Java classes that demonstrate the use of the above packages, particularily for plotting and animation.</p>
+	
+	<a class="navLink" target="blank" href="https://github.com/MatthewPeterKelly/myJavaPkgs/tree/master/mpk_games">
+		&#8592; Games
+	</a>
+	<p>
+		A place to put simple Java games. So far I've only written one: <a href="http://en.wikipedia.org/wiki/Snake_(video_game)">Snake</a>.
+	</p>
+	
+	<h2>Website</h2>
+	<a class="navLink" target="blank"  href="https://github.com/MatthewPeterKelly/website">
+		&#8592; Website
+	</a>
+	<p>
+		The source for this website is in GitHub, including all of the Javascript that runs the interactive <a href="https://github.com/MatthewPeterKelly/website/tree/master/tutorials">
+		tutorials</a>.
+	</p>
+</body>
+</html>

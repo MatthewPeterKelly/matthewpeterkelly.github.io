@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<head>
+  <title>Trajectory Optimization</title>
+  <link rel="stylesheet" type="text/css" href="../../style.css" />
+  <link rel="stylesheet" type="text/css" href="../../styleLight.css" />
+  <link href="http://fonts.googleapis.com/css?family=Merienda+One" rel="stylesheet" type="text/css">
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-64560597-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  </head>
+<body>
+
+  <h1>Trajectory Optimization</h1>
+  <div class="navBlock">
+    <a href="../../index.html" class="navLink">  &#8592; Home </a>
+    <br>
+    <a href="../index.html" class="navLink"> &#8592; Tutorials </a>
+    <br>
+  </div>
+  <div class="signature"> - Matthew Kelly</div>
+
+  <br>
+  <br>
+
+  <h2>Trajectory Optimization - Learning the Theory</h2>
+  <div id="TrajOpt_Theory" class="figure">
+
+    <a class="navLink" href="https://youtu.be/wlkRYMVUZTs">
+      &#8592; Trajectory Optimization Tutorial:  Video  ( YouTube )
+    </a>
+    </br>
+    <a class="navLink" target="blank" href="http://www.matthewpeterkelly.com/tutorials/trajectoryOptimization/cartPoleCollocation.svg">
+      &#8592; Trajectory Optimization Tutorial:  Slides  ( html )
+    </a>
+    <p>
+      This presentation is an excellent place to start learning about trajectory optimization.
+      It was designed to be accessable to anyone with a basic background in numerical methods.
+      I watch the comments on the YouTube video, and will generally answer questions within a few days.
+    </p>
+
+    <a class="navLink" href="http://www.matthewpeterkelly.com/research/MatthewKelly_IntroTrajectoryOptimization_SIAM_Review_2017.pdf">
+      &#8592; An Introduction to Trajectory Optimization  ( .pdf )
+    </a>
+    <p>
+      This tutorial is targeted at first-year graduate students that are interested in learning about trajectory optimization.
+      It starts with a broad overview of the field and then teaches the basics of direct collocation through simple examples.
+      The paper is 44 pages long and will be published in SIAM Review in December 2017.
+    </p>
+
+    <a class="navLink" href="http://www.matthewpeterkelly.com/tutorials/trajectoryOptimization/canon.html">
+      &#8592; Aiming a canon: learn trajectory optimization by picture   ( html )
+    </a>
+    <p>
+      I think about trajectory optimization (and most math) visually,
+      and I find that visual demonstrations can be a useful teaching tool.
+      This tutorial shows how shooting and collocation methods work using the example of aiming a canon.
+      Rather than detailed mathematics, I focus instead on making clear visual representations of the techniques.
+    </p>
+
+    <a class="navLink" href="http://www.matthewpeterkelly.com/tutorials/trajectoryOptimization/terminology.html">
+      &#8592; Trajectory Optimization Terminology  ( html )
+    </a>
+    <p>
+      Trajectory optimization is a field that is filled with complex terminology.
+      This is made more challenging by the fact that many author use the same words to mean different things,
+      or different words to mean the same thing.
+      Here I walk through several sub-topics and clearly define and provide context for several of the most important terms.
+    </p>
+
+    <a class="navLink" href="https://arxiv.org/pdf/1707.00284.pdf">
+      &#8592; Transcription Methods for Trajectory Optimization  ( .pdf )
+    </a>
+    <p>
+      I wrote this 14 page report when I was first learning to write my own trajectory optimization code and learn about trajectory optimization as it is used in legged locomotion.
+      It focuses on transcription methods, including both collocation and shooting methods, as well as how to deal with hybrid systems.
+    </p>
+
+  </div>
+
+
+  <h2>Trajectory Optimization - Implementation</h2>
+  <div id="TrajOpt_Implementation" class="figure">
+    <p>
+      In order to really learn trajectory optimization you will need to write some code. <br>
+      Here are a few examples of how to implement trajectory optimization in Matlab.
+    </p>
+
+    <a class="navLink" href="https://github.com/MatthewPeterKelly/dscTutorials/tree/master/TrajectoryOptimization/Example_1_Cannon">
+      &#8592; Aiming a canon
+    </a>
+    <p>
+      Matlab implementation of the canon-aiming tutorial above.
+      Contains simple implementations with single shooting, multiple shooting, and direct collocation.
+    </p>
+
+    <a class="navLink" href="https://github.com/MatthewPeterKelly/dscTutorials/tree/master/Trajectory_Optimization_Hammer_Example">
+      &#8592; An optimal hammer swing
+    </a>
+    <p>
+      This simple tutorial shows how to implement a multiple shooting method in Matlab.
+      The example problem is that of a periodic hammer swing, where the hammer bounces off of a table.
+      It shows how to do trajectory optimization on a (very simple) hybrid system.
+    </p>
+
+    <a class="navLink" href="https://github.com/MatthewPeterKelly/OptimTraj">
+      &#8592; OptimTraj: Trajectory optimization library for Matlab
+    </a>
+    <p>
+      OptimTraj is a general-purpose trajectory optimization library that I wrote for Matlab.
+      While writing it I made a special effort to make the code readable with lots of comments and a clear organization;
+      it is designed to be read as a tutorial.
+      OptimTraj comes with several examples that show how to code up a variety of problems,
+      starting simple (pendulum) and working up to a walking gait for a 5-link biped model.
+    </p>
+
+  </div>
+
+  <br>
+  <br>
+
+</body>

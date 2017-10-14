@@ -1,0 +1,154 @@
+
+
+svg {
+    background-color: #bbbbbb;
+    box-shadow: 0 1px 4px -2px;
+    cursor: crosshair;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border: 2;
+}
+
+#chaser {
+    fill: hsl(220, 85%, 40%);
+}
+
+.handle {
+    fill: hsl(100, 80%, 35%);
+    fill-opacity: 0.1;
+    stroke: hsl(120, 70%, 20%);
+    stroke-width: 2px;
+}
+
+.handle:hover {
+    fill: hsl(100, 85%, 30%);
+    fill-opacity: 0.1;
+    stroke: hsl(120, 70%, 20%);
+    stroke-width: 3px;
+}
+
+.sliderRail {
+    stroke: hsl(0, 0%, 67%);
+    stroke-width: 18;
+    stroke-linecap: round;
+}
+
+.sliderRail:hover {
+    stroke: hsl(0, 0%, 69%);
+    stroke-width: 18;
+    stroke-linecap: round;
+}
+
+.curve {
+    stroke: hsl(220, 85%, 40%);
+    stroke-width: 3;
+    fill: none;
+}
+
+.domain {
+    fill: none;
+    stroke: black;
+    stroke-width;
+    1;
+}
+
+.axisLabel {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.sliderLabel {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+pre.src {
+    border-top: none;
+    border-bottom: none;
+    border-left: 1em solid #eee;
+    resize: none;
+}
+
+script + .org-src-container pre {
+    margin-top: 0;
+    padding-top: 0.5em;
+}
+
+
+
+#underDampedDescription { display: none; } 
+#overDampedDescription { display: none; }
+#criticallyDampedDescription { display: none; }
+
+#dampingLevelDescription {
+}
+
+
+#pdColumn1 {
+    /*background-repeat: no-repeat;*/
+    width: calc(50% - 450px - 30px);
+    float: left;
+    margin-left: 30px;
+    margin-top: 20px;
+    /*text-align: right;*/
+    /*margin-right: 50%;*/
+    /*text-align: right;*/
+}
+#pdColumn2 {
+    /*background-repeat: no-repeat;*/
+    position:absolute;
+    left:50%;
+    width: 900px;
+    float: left;
+    margin-left:-450px;
+
+    /*align-content: center;*/
+}
+
+#pdColumn3 {
+    width: calc(50% - 450px - 30px);
+    float:right;
+    margin-right: 30px;
+    margin-top: 20px;
+}
+
+p {
+    text-align: left;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 18px;
+}
+
+
+
+/* THIS IS A HACK: 
+DIRECT COPY FROM TOP LEVEL STYLE FILE */
+.header {
+    text-align: center;
+    color: #000000;
+}
+.header ul {
+    text-align: center;
+    padding: 0;
+    list-style-type: none;
+}
+.header ul li {
+    display: inline;
+    margin: 0.2em;
+}
+.header ul li a {
+    text-decoration: none;
+    padding: .2em 0.8em;
+    color: #B5B4DC;
+    background-color: #2114D4;
+    border-radius: 0.3em;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+.header ul li a:hover {
+    color: #2114D4;
+    background-color: #B5B4DC;
+    text-decoration: underline;
+    border-radius: 0.3em;
+}

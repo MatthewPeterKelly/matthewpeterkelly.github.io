@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>PD-controllers</title>
+    <link rel="stylesheet" type="text/css" href="../../styleLight.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="https://d3js.org/d3.v2.min.js?2.10.0"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [["$","$"],["\\(","\\)"]] }, jax: ["input/TeX","output/HTML-CSS"], displayAlign: "left" });
+    </script>
+    <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-64560597-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+</head>
+
+<body>
+    <div class="header">
+        <h1>PD Controller</h1>
+        <ul>
+            <li><a href="../../index.html">home</a></li>
+            <li><a href="../../research/index.html">research</a></li>
+            <li><a href="../../tutorials/index.html">tutorials</a></li>
+            <li><a href="../../code/index.html">code</a></li>
+        </ul>
+    </div>
+    <div id="pdColumn1">
+        <div id="dampingLevelDescription" align="justify"></div>
+        <div id="criticallyDampedDescription">
+            <h2 style="text-align: center; margin-right: 10%; margin-top: 0%">Critically Damped</h2>
+            <p> Damping ratio is equal to one.
+                <br> Fastest tracking without overshoot.</p>
+        </div>
+        <div id="underDampedDescription">
+            <h2 style="text-align: center; margin-right: 10%; margin-top: 0%">Under Damped</h2>
+            <p> Damping ratio is less than one.
+                <br> Fast response, but system will overshoot.</p>
+        </div>
+        <div id="overDampedDescription">
+            <h2 style="text-align: center; margin-right: 10%; margin-top: 0%">Over Damped</h2>
+            <p> Damping ratio is greater than one.
+                <br> Slow response, but no oscillation.</p>
+        </div>
+        <h2 style="text-align: left">Controller Equations:</h2>
+        <div>
+            <div style="text-align: left"> $$f = k_p (x_{ref}-x) + k_d (v_{ref}-v)$$ </div>
+            <br>
+            <div> $$k_p = \omega_n^2 $$ </div>
+            <div style="text-align: right"> <b class="kpValue">123</b> $ = (2 \pi * $ <b class="wnValue">123</b> $)^2 $ </div>
+            <br>
+            <div s> $$k_d = 2 \xi \omega_n$$ </div>
+            <div id="kdEquation" style="text-align: right"> <b class="kdValue">123</b> ${= 2 * }$ <b class="xiValue">234</b> ${* (2\pi * }$ <b class="wnValue">23</b> ${)}$</div>
+        </div>
+    </div>
+    </div>
+    <div id="pdColumn2">
+        <div>
+            <svg id="panelPtMass" style="width: 800px; height: 400px;">
+                <circle id="chaser" class="circle" r="8" z-index="-1" />
+                <circle id="target" class="handle" class="circle" r="14" />
+            </svg>
+            <br>
+            <svg id="panelTwo" style="width: 800px; height: 150px;">
+                <line id="dampingRail" class="sliderRail" x1="160" x2="300" y1="30" y2="30" />
+                <text x="10" y="30" fill="black" dominant-baseline="central" class="sliderLabel">Damping Ratio:</text>
+                <circle id="dampingCircle" class="handle" class="circle" r="14" />
+                <text id="dampingLabel" x="30" y="55" fill="black" text-anchor="middle" dominant-baseline="central">0.00</text>
+                <line id="frequencyRail" class="sliderRail" x1="160" x2="300" y1="100" y2="100" />
+                <text x="10" y="100" fill="black" dominant-baseline="central" class="sliderLabel">Frequency (Hz):</text>
+                <circle id="frequencyCircle" class="handle" class="circle" r="14" />
+                <text id="frequencyLabel" x="0" y="125" fill="black" text-anchor="middle" dominant-baseline="central">0.00</text>
+                <text x="335" y="75" transform="rotate(270 335 75)" fill="black" text-anchor="middle" class="axisLabel" dominant-baseline="central">position</text>
+                <text x="550" y="85" fill="black" text-anchor="middle" class="axisLabel" dominant-baseline="central">time</text>
+                <line x1="350" x2="800" y1="75" y2="75" stroke-width="2" stroke="black" />
+                <line x1="350" x2="350" y1="5" y2="145" stroke-width="2" stroke="black" />
+            </svg>
+        </div>
+        <br>
+        <div style="width: 900px">
+            <p>
+                A proportional-derivative (PD) controller can be used to make a simple system track some reference point. The suspension in a car is an analogue example: the spring and damper work together to hold the car at some desired height. The spring exerts a force <em>proportional</em> its deflection, while the damper opposes motion (the <em>derivative</em> of deflection).
+            </p>
+            <p>A PD controller uses the same principles to create a virtual spring and damper between the measured and reference positions of a system. Above is an example showing a simulated point-mass (blue dot) that is tracking a target (green circle). Try clicking or dragging to move the target around.</p>
+            <p>
+                The response of a PD controller can be characterized by two numbers: the <em>damping ratio</em> and the <em>natural frequency</em>. If the damping ratio is less than one, then the system will gradually approach the target. If the damping ratio is greater than one, the system will shoot past the target before returning. The natural frequency describes how quickly the system approaches the target. Try adjusting these parameters above, and see how they affect the ability of the dot to track the circle above.
+            </p>
+            <p>
+                One standard metric for control analysis is called a <em>step
+            response</em>. The step response for a system (the position vs. time curve above) plots the behavior of the system over time, when subject to an initial deviation in position. Try adjusting the damping ratio and natural frequency. How does each affect the step response?
+            </p>
+            <br>
+            <p> <b> Written by <a href="../../index.html">Matthew Kelly</a> and <a href="http://bradsaund.com/">Brad Saund</a>.</b>
+        </div>
+    </div>
+    <div id="pdColumn3">
+        <input type="checkbox" id="MotionCheckboxId" name="MotionCheckbox" value="movingTarget" onchange="onMotionSettingChange(this.checked)" autocomplete="off">Moving Target
+        <br>
+        <div id="motionDiv" style="display:none;margin-left:30px;">
+            <input type="radio" name="MotionType" value="sinusoid" onchange="onMotionSettingSelected()" autocomplete="off">Sinusoid
+            <br>
+            <input type="radio" name="MotionType" value="circle" onchange="onMotionSettingSelected()" autocomplete="off">Circle
+            <br>
+            <input type="radio" name="MotionType" value="jump" onchange="onMotionSettingSelected()" autocomplete="off">Jump
+            <br>
+        </div>
+        <input type="checkbox" name="GravityCheckbox" onchange="onGravityChange(this.checked)" autocomplete="off"> Add Gravity
+    </div>
+</body>
+<script src="numericalIntegration.js"></script>
+<script src="pdControl.js"></script>
+<script src="advancedPdControl.js"></script>

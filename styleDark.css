@@ -1,0 +1,31 @@
+/* This file overrides the default colors to provide a light theme */
+
+body {
+      background: #222222;
+ }
+ 
+a {
+    color: #999999;
+}
+
+  a:hover {
+     color: #bbbbbb;
+ }
+
+  .annotation {
+     color: #114488;
+ }
+
+ 
+ h1 {
+     color: #999999;
+ }
+
+ h2, h3, h4, .signature, .navLink, .abstract{
+     color: #888888;
+ }
+ 
+ p, ul {
+     color: #888888;
+ }
+ 

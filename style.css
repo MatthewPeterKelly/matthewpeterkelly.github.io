@@ -1,0 +1,121 @@
+body {
+     width: 1000px;
+     margin: 0 auto;
+ }
+ 
+ a {
+     cursor: pointer;
+     word-wrap: break-word;
+     text-decoration: underline;
+ }
+ 
+ .abstract {
+     font: 100 16px Helvetica, sans-serif;
+     margin-left: 300px;
+     margin-right: 150px;
+     margin-top:-75px;
+     margin-bottom: 50px;
+}
+.abstract p{
+  margin-left: 0px; 
+  margin-right: 0px; 
+}
+
+.navLink {
+     font: 400 18px 'Merienda One', Helvetica, sans-serif;
+     margin-left: 100px;
+     text-decoration: none;
+}
+ 
+.navBlock {
+    margin-top: -30px;
+}
+
+ .annotation {
+     font: 400 22px 'Merienda One', Helvetica, sans-serif;
+     text-align: center;
+     margin-top: 20px;
+     margin-bottom: 20px;
+ }
+
+ .signature {
+     font: 400 24px 'Great Vibes', 'Merienda One', Helvetica, sans-serif;
+     text-align: right;
+     margin-right: 150px; 
+     margin-top: -35px; 
+ }
+
+ img {
+     max-width: 100%;
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+ }
+
+ .figure {
+     max-width: 100%;
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+ }
+
+iframe {
+     max-width: 100%;
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+ }
+
+ .clickable {
+     cursor: pointer;
+ }
+ 
+ h1 {
+     font: 400 64px 'Great Vibes', 'Merienda One', Helvetica, sans-serif;
+     text-align: center;
+ }
+
+ h2 {
+     font: 400 32px 'Merienda One', Helvetica, sans-serif;
+     text-align: left;
+    margin-left: 100px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+ }
+ 
+h3 {
+     font: 400 20px 'Merienda One', Helvetica, sans-serif;
+     text-align: left;
+    margin-left: 150px;
+ }
+
+ h4 {
+     font: 400 14px 'Merienda One', Helvetica, sans-serif;
+     text-align: left;
+    margin-left: 150px;
+    margin-bottom: 0px;
+ }
+
+ p {
+     font: 18px Helvetica, sans-serif;
+     margin-left: 150px;
+     margin-right: 150px;
+ }
+ 
+ ul {
+     font: 100 16px Helvetica, sans-serif;
+     margin-left: 150px;
+     margin-right: 150px;
+     margin-top: 0px;
+ }
+
+ table {
+    border-collapse: collapse;
+}
+
+td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+        padding-left: 10px;
+    padding-right: 10px;
+}
