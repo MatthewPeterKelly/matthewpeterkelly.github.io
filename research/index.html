@@ -34,27 +34,45 @@
             <a href="../code/index.html" class="navLink">  &#8592; Code </a>
             <br>
         </div>
-        <!-- <div class="abstract">
-            TODO:  Update this
-
-            I'm a PhD student at Cornell University, studying robotics with Professor <a href="http://ruina.tam.cornell.edu/" target="blank">Andy Ruina</a>. My research interests are focused on understanding how to control complicated dynamical systems, particularly walking robots. This page has most of my formal results, as well as some previous work in mechanical design.
-        </div> -->
+        <div class="abstract">
+          This page summarizes a variety of research projects that I worked on, starting while I was an undergraduate at Tufts University.
+          The more recent projects were completed as part of my PhD research at Cornell University,
+          where I worked with Professor <a href="http://ruina.tam.cornell.edu/" target="blank">Andy Ruina</a> studying bipedal locomotion and control.
+        </div>
         <div class="signature"> - Matthew Kelly</div>
 
-        <h2>Site Under Construction!</h2>
 
-        <!-- <h2> Robust control for Cornell Ranger</h2>
+
+        <h2> Robust control for Cornell Ranger</h2>
         <p>
-            My ongoing research (september 2015) is working on developing more robust walking controller for the <a href="http://ruina.tam.cornell.edu/research/topics/locomotion_and_robotics/ranger/Ranger2011/" target="blank">Cornell Ranger</a>. The key motivation behing my controller design is that the controller should be robust to errors in modelling (eg. design in simulation, directly implement on robot) as well as to external perturbations (eg. not stumble and fall when the robot encounters a hill). One of the ways that I do this is to include disturbances in the design process.
-        </p>
-        <p> As of now, I have a working simulation that is a pretty good model for the robot, as well as a controller design process that uses some basic machine learning and optimization. I coded up the controller on the Cornell Ranger, and I can take the optimal parameters directly from simulation and get them to work on the real robot. At this point I'm working on more sophisticated controller design as well as a better characterization of the differences between the real robot and the simulation. </p>
+            One of the main research focuses in my PhD was developing a more robust balance controller for the
+            <a href="http://ruina.tam.cornell.edu/research/topics/locomotion_and_robotics/ranger/Ranger2011/" target="blank"> Cornell Ranger walking robot </a>.
+            I developed a controller architecture for the robot that allowed for automated controller design, both in simulation and in hardware.
+            The gains for the balance controller were initially computed using large-scale optimization in simulation.
+            The simulation was designed to include a wide range of disturbances, so that we could usually transfer controllers directly from simulation to the real robot.
+            Once on the robot, the balance controller gains were fine-tuned using optimization that was running in real-time on the robot.
         <ul>
-            <li> Wrote high-fidelity time-stepping simulator for Ranger.  </li>
-            <li> Developed a simple control architecture <a href="https://www.youtube.com/watch?v=Jpgp6qWhvT0" target="blank"> working in simulation</a>, including optimization to find gains. </li>
-             <li> A more sophisticated high-level controller, that updates gait parameters to <a href="https://youtu.be/omhk9OMTVVM" target="blank"> handle disturbances</a>, based on reinforcement learning. </li>
-            <li> Completely rewrote the high-level control architecture on Ranger. </li>
-            <li> Ranger now <a href="https://youtu.be/BL334UZvKSE" target="blank"> walks with my simple controller,</a> as well as with the more sophisticared <a href="https://youtu.be/SRY8x-oR470" target="blank"> controller based on reinforcement learning.</a></li>
+            <li> Wrote high-fidelity simulator for Ranger, including contact solver.<br>
+                <a href="https://github.com/MatthewPeterKelly/RangerSimulation">
+                  Ranger Simulation and Trajectory Optimization Code.</a> </li>
+            <li> Completely rewrote the high-level control architecture on Ranger.<br>
+<a href="https://github.com/RuinaLab/Ranger/tree/master/Ranger/Control/Controller">Control Code.</a>
+<a href="https://github.com/RuinaLab/Ranger/tree/master/Ranger/Control/Estimator">Estimation Code.</a>
+<li> Draft of the main research paper:
+    <a href="https://www.dropbox.com/s/xwdm6rpq8wx0nkh/RangerControlPaper_SubmittedOct2017.pdf?dl=1">Automatic Controller Design for Ranger.pdf</a> </li>
+            </li>
+            <li> <a href="https://www.youtube.com/playlist?list=PLb52zaHzuYlrZMcPYHyCcLE039CJ0cqAN" target="blank">Walking videos and simulations </a></li>
         </ul>
+
+    <h2> Trajectory Optimizaiton Tutorials</h2>
+    <p> I spent much of my time at Cornell learning trajectory optimization and coding up my own solvers.
+        I found learning about the subject fascinating, so I developed a set of tutorials for trajectory optimization,
+        including a long paper that is going to be published in SIAM in December 2017. </p>
+
+        <ul> <li>  <a href="../tutorials/trajectoryOptimization/index.html">
+                  Trajectory Optimization Tutorials</a> </li>  </ul>
+
+
         <h2>Non-linear robust control for inverted-pendulum 2D walking</h2>
         <p>
             Conference paper for ICRA 2015. The key contribution is a way of posing and solving the following constrained optimization problem: "Find a controller that can regulate walking speed while preventing all falls, given any (bounded) disturbance."
@@ -67,10 +85,11 @@
             Paper</a></li>
             <li><a href="ICRA_2015/icra2015_digitalPoster.pdf">Poster</a></li>
         </ul>
+
         <h2>A Exam (thesis proposal)</h2>
         <p>I took my A exam in August 2014. My proposal was on the topic of 'Heirarchical Biped Control'. The idea is to do step planning on a reduced model of the robot, which is then used to help generate the motor commands on the full model. In addition to my presentation, I submitted three written reports.</p>
         <ul>
-            <li><a href="MattKelly__A_Exam_Presentation.pdf">Presentation</a>
+            <li><a href="https://www.dropbox.com/s/j2ot4qvsv6310by/MattKelly__A_Exam_Presentation.pdf?dl=1">Presentation</a>
         <em>- Heirarchical Biped Control</em></li>
         <li><a href="MattKelly__Transcription_Methods_for_Trajectory_Optimization.pdf">Report</a>
         <em>- Transcription Methods for Trajectory Optimization </em> ( <a href="code.html#TrajectoryOptimization">examples</a> )</li>
@@ -87,7 +106,7 @@
 <p>For my qualifying exam (January 2012) I presented a simulation of a tractor trailer truck driving backwards along a curving road. It had partial sensing of its state using noisy sensors, and control of the steering angle and travel speed (both of which were bounded). State estimation was done using an extended Kalman filter (EKF). Control was done by using a discrete linear quadratic regulator (dLQR), on the linearized system (about the current state estimate).
 </p>
 <ul>
-    <li><a href="Q_Exam_Presentation.pdf"> Presentation</a>
+    <li><a href="https://www.dropbox.com/s/tkof7vu2w0mol67/Q_Exam_Presentation.pdf?dl=1"> Presentation</a>
 </li>
 <li>
     <a href="https://github.com/MatthewPeterKelly/dscTutorials/tree/master/tractorTrailer">Matlab
@@ -102,11 +121,11 @@ Animation 3 </a>
 </ul>
 <h2>Dynamic Walking Conference</h2>
 <ul>
-<li><a href="DWC_2014-Matthew Kelly - Poster - simulation_and_optimization.pdf">
+<li><a href="https://www.dropbox.com/s/8rjv3nlutcsdkp6/DWC_2014-Matthew%20Kelly%20-%20Poster%20-%20simulation_and_optimization.pdf?dl=1">
 2014 Poster</a> - <em>Bipeds: Simulation &amp; Optimization</em></li>
-<li><a href="DWC_2013 - Matthew Kelly - Poster - Reflex Control.pdf">
+<li><a href="https://www.dropbox.com/s/7v676yd3gz3br1p/DWC_2013%20-%20Matthew%20Kelly%20-%20Poster%20-%20Reflex%20Control.pdf?dl=1">
 2013 Poster</a> - <em>Reflex Control of Walking</em></li>
-<li><a href="DWC_2012 - Matthew Kelly - Poster - Ranger Balance.pdf">
+<li><a href="https://www.dropbox.com/s/bm5j8uh6ivqbiqv/DWC_2012%20-%20Matthew%20Kelly%20-%20Poster%20-%20Ranger%20Balance.pdf?dl=1">
 2012 Poster</a> - <em>Feasibility of Achieving Standing Bipedal
 Balance with Small Feet</em></li>
 </ul>
@@ -119,7 +138,7 @@ Balance with Small Feet</em></li>
 <li><a href="James et al. - 2013 - Sagittal Bone Saw With Orbital Blade Motion for Improved Cutting Efficiency.pdf">
 Journal Paper</a> <em>- Sagittal Bone Saw with Orbital Blade
 Motion for Improved Cutting Efficiency</em></li>
-<li><a href="Matthew Kelly - Senior Thesis - Tufts University.pdf">
+<li><a href="https://www.dropbox.com/s/7o3kuaa993t31fp/Matthew%20Kelly%20-%20Senior%20Thesis%20-%20Tufts%20University.pdf?dl=1">
 Senior Thesis</a> <em>- Novel Sagittal Bone Saw</em></li>
 <li><a href="Kelly, Lannin, James - 2011 - A Study on the cutting rate of a Novel Sagittal Bone Saw.pdf">
 Conference Paper</a> <em>- A Study on the Cutting Rate Performance
@@ -132,6 +151,7 @@ Provisional Patent</a> <em>- Sagittal Saw</em></li>
 <li><a href="ASME IMECE 2011-62457 -  Reciprocating Bone Saw - Effect of Blade Speed on Cutting Rate.pdf">
 Conference Paper</a> - Recriprocating Bone Saw: Effect of Blade Speed on Cutting Rate</li>
 </ul>
+
 <h2 id="Research_RheometerControl">Non-linear control design for extensional rheometer </h2>
 <p>
 In my last year of undergrad, I worked as a research assistant in the <a href="http://web.mit.edu/nnf/">Non-Newtonian Fluids lab at MIT</a>, along with <a href="https://www.linkedin.com/pub/timothy-lannin/93/902/985"> Tim Lannin </a> and <a href="https://www.linkedin.com/pub/will-langford/16/880/164"> Will Langford</a>. Our goal was to design and implement a non-linear tracking controller on their Filament Stretching Extensional Rheometer (<a href="http://web.mit.edu/nnf/presentation/sld004.htm">FiSER</a>) and to redesign the LabVIEW program that ran the experiments.
@@ -147,11 +167,11 @@ FiSER characterizes fluids by rapidly stretching them, and measuring both the ax
 future</h4>
 <br>
 <ul>
-<li><a href="A theme-based course, hydrogen as the fuel of the future.pdf">main
+<li><a href="https://www.dropbox.com/s/7i3yey4au36rmwh/A%20theme-based%20course%2C%20hydrogen%20as%20the%20fuel%20of%20the%20future%20--%20supplement.pdf?dl=1">main
 paper</a></li>
-<li><a href="A theme-based course, hydrogen as the fuel of the future -- supplement.pdf">supplement</a>
+<li><a href="https://www.dropbox.com/s/j1eq7el93t84vff/A%20theme-based%20course%2C%20hydrogen%20as%20the%20fuel%20of%20the%20future.pdf?dl=1">supplement</a>
 </li>
-</ul> -->
+</ul>
 <br>
 <br>
 <br>
