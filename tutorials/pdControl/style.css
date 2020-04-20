@@ -3,7 +3,8 @@
 svg {
     background-color: #bbbbbb;
     box-shadow: 0 1px 4px -2px;
-    cursor: crosshair;
+    /* In some browsers, the "crosshair" is the same as the background color, and thus becomes invisible */
+    /* cursor: crosshair;  */
     margin-left: auto;
     margin-right: auto;
     display: block;
