@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-
+<html>
 <head>
+<meta name="generator" content=
+"HTML Tidy for HTML5 for Linux version 5.6.0">
+<meta charset="utf-8">
 <title>Quadrature</title>
-<link rel="stylesheet" type="text/css" href="../../style.css" />
-<link rel="stylesheet" type="text/css" href="../../styleLight.css" />
+<link rel="stylesheet" type="text/css" href="../../style.css">
+<link rel="stylesheet" type="text/css" href="../../styleLight.css">
 <!--<link href="http://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet" type="text/css">-->
-<link href="http://fonts.googleapis.com/css?family=Merienda+One" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Merienda+One"
+rel="stylesheet" type="text/css">
 <script src="https://d3js.org/d3.v2.min.js?2.10.0"></script>
 <script src="quadrature.js"></script>
-
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -19,9 +21,10 @@
   ga('create', 'UA-64560597-1', 'auto');
   ga('send', 'pageview');
 
-</script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BZGM3WTCJY"></script>
+</script><!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src=
+"https://www.googletagmanager.com/gtag/js?id=G-BZGM3WTCJY"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
@@ -29,94 +32,76 @@ gtag('js', new Date());
 
 gtag('config', 'G-BZGM3WTCJY');
 </script>
-
 </head>
-
 <body>
+<h1>Numerical Quadrature:</h1>
+<div class="navBlock"><a href="../../index.html" class="navLink">←
+Home</a><br>
+<a href="../index.html" class="navLink">← Tutorials</a><br></div>
+<div class="signature">- Matthew Kelly</div>
+<br>
+<!-- <br>
+        <div class="annotation">Under Construction! More coming soon.</div>
+        <br> -->
+<br>
+<h2>Quadrature Algorithms in Python:</h2>
+<div id="ExampleCode" class="figure"><a class="navLink" href=
+"https://github.com/MatthewPeterKelly/numerical-methods-in-python/tree/master/numerical_methods">
+← Midpoint Rule and Trapezoid Rule</a>
+<p>I'm working on making a python library that shows how to code up
+some common quadrature methods. So far I've only made coded-up two
+methods, but hope to do more.</p>
+</div>
+<br>
+<br>
+<h2>Quadrature Algorithms in Matlab:</h2>
+<div id="ExampleCode" class="figure"><a class="navLink" href=
+"https://www.mathworks.com/matlabcentral/fileexchange/54457-simpsonquadrature">
+← Simpson Quadrature</a>
+<p>Simpson Quadrature is a commonly used method for numerically
+computing integrals. It is a good trade-off between simplicity and
+accuracy. Simpson Quadrature works by approximating the integrand
+as a sequence of quadratic segments.</p>
+<a class="navLink" href=
+"https://www.mathworks.com/matlabcentral/fileexchange/55703-rombergquadrature">←
+Rhomberg Quadrature</a>
+<p>Rhomberg Quadrature is one of the most accurate quadrature
+methods available, and is complicated to implement. It is used in
+applications where the integral must be known to a specified
+precision. Rhomberg Quadrature works by computing a sequence of
+approximations using the trapezoid method. Each approximation uses
+a a smaller grid spacing. Richardson extrapolation is then used to
+predict the limit as the grid spacing goes to zero.</p>
+</div>
+<!-- <h2>Rectangle-rule:</h2>
+        <div id="RectangleRule" class="figure"></div>
+        <script>
+                var svg1 = d3.select("#RectangleRule").append("svg").attr("width",
+                                width + margin.left + margin.right).attr("height",
+                                height + margin.top + margin.bottom).append("g").attr(
+                                "transform",
+                                "translate(" + margin.left + "," + margin.top + ")");
 
-	<h1>Numerical Quadrature:</h1>
-	<div class="navBlock">
-		<a href="../../index.html" class="navLink">  &#8592; Home </a>
-		<br>
-		<a href="../index.html" class="navLink"> &#8592; Tutorials </a>
-		<br>
-	</div>
-	<div class="signature"> - Matthew Kelly</div>
-	<br>
-	<!-- <br>
-	<div class="annotation">Under Construction! More coming soon.</div>
-	<br> -->
-	<br>
+                svg1.append("g").attr("class", "x axis").attr("transform",
+                                "translate(0," + height + ")").call(xAxis);
 
+                svg1.append("g").attr("class", "y axis").call(yAxis);
 
-  <h2>Quadrature Algorithms in Python:</h2>
-	<div id="ExampleCode" class="figure">
+                // Plot the obvious red curve
+                svg1.append("path").attr("d", lineSmooth(buildData(100))).attr(
+                                "stroke", "red").attr("stroke-width", 4).attr("fill", "none");
 
-    <a class="navLink" href="https://github.com/MatthewPeterKelly/numerical-methods-in-python/tree/master/numerical_methods">
-    	&#8592; Midpoint Rule and Trapezoid Rule
-    </a>
-    <p>
-    	I'm working on making a python library that shows how to code up some common quadrature methods.
-      So far I've only made coded-up two methods, but hope to do more.
-    </p>
-
-  </div>
-
-
-  <br>
-	<br>
-
-
-  <h2>Quadrature Algorithms in Matlab:</h2>
-  <div id="ExampleCode" class="figure">
-
-    <a class="navLink" href="https://www.mathworks.com/matlabcentral/fileexchange/54457-simpsonquadrature">
-      &#8592; Simpson Quadrature
-    </a>
-    <p>
-      Simpson Quadrature is a commonly used method for numerically computing integrals.
-      It is a good trade-off between simplicity and accuracy.
-      Simpson Quadrature works by approximating the integrand as a sequence of quadratic segments.
-    </p>
-
-    <a class="navLink" href="https://www.mathworks.com/matlabcentral/fileexchange/55703-rombergquadrature">
-      &#8592; Rhomberg Quadrature
-    </a>
-    <p>
-      Rhomberg Quadrature is one of the most accurate quadrature methods available, and is complicated to implement.
-      It is used in applications where the integral must be known to a specified precision.
-      Rhomberg Quadrature works by computing a sequence of approximations using the trapezoid method.
-      Each approximation uses a a smaller grid spacing.
-      Richardson extrapolation is then used to predict the limit as the grid spacing goes to zero.
-    </p>
-
-  </div>
-
-
-	<!-- <h2>Rectangle-rule:</h2>
-	<div id="RectangleRule" class="figure"></div>
-	<script>
-		var svg1 = d3.select("#RectangleRule").append("svg").attr("width",
-				width + margin.left + margin.right).attr("height",
-				height + margin.top + margin.bottom).append("g").attr(
-				"transform",
-				"translate(" + margin.left + "," + margin.top + ")");
-
-		svg1.append("g").attr("class", "x axis").attr("transform",
-				"translate(0," + height + ")").call(xAxis);
-
-		svg1.append("g").attr("class", "y axis").call(yAxis);
-
-		// Plot the obvious red curve
-		svg1.append("path").attr("d", lineSmooth(buildData(100))).attr(
-				"stroke", "red").attr("stroke-width", 4).attr("fill", "none");
-
-		// Plot the staircase curve:
-		quadData = buildDataStair(25);
-		svg1.append("path").attr("d", lineLeftHold(quadData)).attr("stroke",
-				"blue").attr("stroke-width", 4).attr("fill", "none");
-		svg1.append("path").attr("d", lineLeftHold(quadData)).attr("fill",
-				"blue").attr("opacity", 0.25);
-	</script> -->
-	<br><br><br><br><br>
+                // Plot the staircase curve:
+                quadData = buildDataStair(25);
+                svg1.append("path").attr("d", lineLeftHold(quadData)).attr("stroke",
+                                "blue").attr("stroke-width", 4).attr("fill", "none");
+                svg1.append("path").attr("d", lineLeftHold(quadData)).attr("fill",
+                                "blue").attr("opacity", 0.25);
+        </script> -->
+<br>
+<br>
+<br>
+<br>
+<br>
 </body>
+</html>

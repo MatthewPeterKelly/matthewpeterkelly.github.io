@@ -1,123 +1,103 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-
+<html>
 <head>
-  <title>Canon Tutorial</title>
-  <link rel="stylesheet" type="text/css" href="../../style.css" />
-  <link rel="stylesheet" type="text/css" href="../../styleLight.css" />
-  <link href="http://fonts.googleapis.com/css?family=Merienda+One" rel="stylesheet" type="text/css">
-  <script>
+<meta name="generator" content=
+"HTML Tidy for HTML5 for Linux version 5.6.0">
+<meta charset="utf-8">
+<title>Canon Tutorial</title>
+<link rel="stylesheet" type="text/css" href="../../style.css">
+<link rel="stylesheet" type="text/css" href="../../styleLight.css">
+<link href="http://fonts.googleapis.com/css?family=Merienda+One"
+rel="stylesheet" type="text/css">
+<script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
     ga('create', 'UA-64560597-1', 'auto');
     ga('send', 'pageview');
-  </script>
-  </head>
+</script>
+</head>
 <body>
-
-  <br>
-  <h1>Cannon Example</h1>
-  <div class="navBlock">
-    <a href="../../index.html" class="navLink">  &#8592; Home </a>
-    <br>
-    <a href="index.html" class="navLink"> &#8592; Trajectory Optimization </a>
-    <br>
-  </div>
-  <div class="signature"> - Matthew Kelly</div>
-
-  <br>
-
-  <p>
-    Suppose that you have a cannon, and you would like to hit a known target.
-    To make things interesting, let's assume that there is air friction
-    and that you would like to minimize the amount of powder used for the shot.
-  </p>
-  <p>
-    This situation can be modeled as a boundary-value-problem,
-    since you know where the trajectory (path of the cannon ball) should start and end.
-    The goal is to find the trajectory, including the initial velocity of the cannon ball.
-    We will assume that:<br>
-    (1) the cannon ball is a point mass,<br>
-    (2) air friction is modeled using quadratic drag, and<br>
-    (3) amount of powder is proportional to initial speed squared.<br>
-    Thus we can write out the problem and draw a nice picture as shown below.
-  </p>
-  <p>
-    <a href="https://github.com/MatthewPeterKelly/dscTutorials/tree/master/TrajectoryOptimization/Example_1_Cannon">
-      Here is a link to the Matlab code for all examples on this page.
-    </a>
-  </p>
-  <br>
-  <div class="figure">
-    <img src="cannon.svg" />
-  </div>
-  <h2>Solution: Single Shooting</h2>
-
-  <p>Single shooting works by approximating the
-    trajectory using a single simulation. In other words, fire the cannon,
-    check where the ball landed, adjust the initial speed, repeat. In math
-    terms, the error between the target and where the cannon ball landed
-    is called a defect. The optimization algorithm will try to find the
-    initial speed such that this defect driven to zero. It turns out that
-    single shooting is an effective method for simple problems (like this
-  one), but it will fail on problems that are more difficult.</p>
-  <br>
-  <div class="figure">
-    <img src="cannon_singleShooting.svg" />
-  </div>
-  <br>
-  <div class="figure">
-    <img src="cannon_singleShooting.gif" />
-  </div>
-  <h2>Solution: Multiple Shooting</h2>
-
-  <p>Multiple shooting is very similar to single
-    shooting, but it turns out to be much more robust on difficult
-    problems. It works by breaking the original problem into many small
-    problems, and then solving them in parallel. At the end, each segment
-  is constrained to connect to the previous one.</p>
-  <br>
-  <div class="figure">
-    <img src="cannon_multipleShooting.svg" />
-  </div>
-  <br>
-  <div class="figure">
-    <img src="cannon_multipleShooting.gif" />
-  </div>
-  <h2>Solution: Direct Collocation</h2>
-  <p>Direct collocation is a bit more difficult
-    to visualize, since there is no simulation step. Instead, the
-    trajectory is approximated using a piecewise polynomial. Physics are
-    satisfied by requiring that the dynamics (derivative of the state)
-    match the derivative of the polynomial at each collocation point - the
-    points that implicitly define the polynomial. In effect, shooting
-    methods satisfy dynamics using explicit integration, while collocation
-  methods use implicit integration.</p>
-  <p>
-    There are a wide variety of collocation schemes. Orthogonal
-    collocation schemes, developed for computing satellite trajectories,
-    use a small number of high-order polynomials. They are extremely
-    accurate for problems well behaved solutions. The other extreme is
-    direct collocation, which uses a large number of low-order polynomials
-    to represent the solution. It tends to be slightly less accurate, but
-    can be more robust. Some sophisticated methods (<a
-    href="http://www.gpops2.com/">GPOPS</a>) use an adaptive meshing
-    routine to iterative change the number of segments and order of the
-    polynomials.
-  </p>
-  <p> I gave a presentation at the Cornell robotics seminar on direct collocation in December 2015. You can view the presentation as a web-page
-  <a target="blank" href="cartPoleCollocation.svg">here</a>.
-  </p>
-  <br>
-  <div class="figure">
-    <img src="cannon_directCollocation.svg" />
-  </div>
-  <br>
-  <div class="figure">
-    <img src="cannon_directCollocation.gif" />
-  </div>
-  <br>
-  <br>
+<br>
+<h1>Cannon Example</h1>
+<div class="navBlock"><a href="../../index.html" class="navLink">←
+Home</a><br>
+<a href="index.html" class="navLink">← Trajectory
+Optimization</a><br></div>
+<div class="signature">- Matthew Kelly</div>
+<br>
+<p>Suppose that you have a cannon, and you would like to hit a
+known target. To make things interesting, let's assume that there
+is air friction and that you would like to minimize the amount of
+powder used for the shot.</p>
+<p>This situation can be modeled as a boundary-value-problem, since
+you know where the trajectory (path of the cannon ball) should
+start and end. The goal is to find the trajectory, including the
+initial velocity of the cannon ball. We will assume that:<br>
+(1) the cannon ball is a point mass,<br>
+(2) air friction is modeled using quadratic drag, and<br>
+(3) amount of powder is proportional to initial speed squared.<br>
+Thus we can write out the problem and draw a nice picture as shown
+below.</p>
+<p><a href=
+"https://github.com/MatthewPeterKelly/dscTutorials/tree/master/TrajectoryOptimization/Example_1_Cannon">
+Here is a link to the Matlab code for all examples on this
+page.</a></p>
+<br>
+<div class="figure"><img src="cannon.svg"></div>
+<h2>Solution: Single Shooting</h2>
+<p>Single shooting works by approximating the trajectory using a
+single simulation. In other words, fire the cannon, check where the
+ball landed, adjust the initial speed, repeat. In math terms, the
+error between the target and where the cannon ball landed is called
+a defect. The optimization algorithm will try to find the initial
+speed such that this defect driven to zero. It turns out that
+single shooting is an effective method for simple problems (like
+this one), but it will fail on problems that are more
+difficult.</p>
+<br>
+<div class="figure"><img src="cannon_singleShooting.svg"></div>
+<br>
+<div class="figure"><img src="cannon_singleShooting.gif"></div>
+<h2>Solution: Multiple Shooting</h2>
+<p>Multiple shooting is very similar to single shooting, but it
+turns out to be much more robust on difficult problems. It works by
+breaking the original problem into many small problems, and then
+solving them in parallel. At the end, each segment is constrained
+to connect to the previous one.</p>
+<br>
+<div class="figure"><img src="cannon_multipleShooting.svg"></div>
+<br>
+<div class="figure"><img src="cannon_multipleShooting.gif"></div>
+<h2>Solution: Direct Collocation</h2>
+<p>Direct collocation is a bit more difficult to visualize, since
+there is no simulation step. Instead, the trajectory is
+approximated using a piecewise polynomial. Physics are satisfied by
+requiring that the dynamics (derivative of the state) match the
+derivative of the polynomial at each collocation point - the points
+that implicitly define the polynomial. In effect, shooting methods
+satisfy dynamics using explicit integration, while collocation
+methods use implicit integration.</p>
+<p>There are a wide variety of collocation schemes. Orthogonal
+collocation schemes, developed for computing satellite
+trajectories, use a small number of high-order polynomials. They
+are extremely accurate for problems well behaved solutions. The
+other extreme is direct collocation, which uses a large number of
+low-order polynomials to represent the solution. It tends to be
+slightly less accurate, but can be more robust. Some sophisticated
+methods (<a href="http://www.gpops2.com/">GPOPS</a>) use an
+adaptive meshing routine to iterative change the number of segments
+and order of the polynomials.</p>
+<p>I gave a presentation at the Cornell robotics seminar on direct
+collocation in December 2015. You can view the presentation as a
+web-page <a target="blank" href=
+"cartPoleCollocation.svg">here</a>.</p>
+<br>
+<div class="figure"><img src="cannon_directCollocation.svg"></div>
+<br>
+<div class="figure"><img src="cannon_directCollocation.gif"></div>
+<br>
+<br>
 </body>
+</html>

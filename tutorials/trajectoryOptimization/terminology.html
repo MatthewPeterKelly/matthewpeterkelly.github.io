@@ -1,102 +1,167 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="../../style.css" />
-<link rel="stylesheet" type="text/css" href="../../styleLight.css" />
-<!--<link href="http://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet" type="text/css">-->
-<link href="http://fonts.googleapis.com/css?family=Merienda+One" rel="stylesheet" type="text/css">
+<html>
 <head>
-	<title>Trajectory Optimization Terminology</title>
+<meta name="generator" content=
+"HTML Tidy for HTML5 for Linux version 5.6.0">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../../style.css">
+<link rel="stylesheet" type="text/css" href="../../styleLight.css">
+<!--<link href="http://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet" type="text/css">-->
+<link href="http://fonts.googleapis.com/css?family=Merienda+One"
+rel="stylesheet" type="text/css">
+<title>Trajectory Optimization Terminology</title>
 </head>
 <body>
-	<h1>Trajectory Optimization Terminology</h1>
-	<br>
-	<div class="navBlock">
-		<a href="../../index.html" class="navLink">  &#8592; Home </a>
-		<br>
-		<a href="../../tutorials/index.html" class="navLink"> &#8592; Tutorials </a>
-		<br>
-	</div>
-	<div class="abstract">
-		<p> In trying to learn trajectory optimization, I've found it difficult to understand the terminology.
-			This is in part due to the complexity of the field, and in part due to conflicting information on the topic.
-			I've organized this page by trying to look at different aspects that all methods have in common, and what the different options are.
-			In general, all topics discussed here have to to with
-		<b>transcription</b>, the process by which an optimal control problem is transformed into a constrained non-linear programming problem.</p>
-		<p> My information comes from a variety of sources:
-			journal papers (mostly either by <a href="http://vdol.mae.ufl.edu/" target="blank">Anil Rao</a> or <a href="https://groups.csail.mit.edu/locomotion/russt.html" target="blank">Russ Tedrake</a>),
-			the documentation for <a href="http://www.gpops2.com/" target="blank">GPOPS II</a>,
-			the source code of <a href="https://github.com/RobotLocomotion/drake/wiki" target="blank"> Drake</a>,
-			<a href="https://www.edx.org/course/underactuated-robotics-mitx-6-832x" target="blank">video lectures</a> by Russ Tedrake,
-			<a href="http://www.amazon.com/Practical-Estimation-Nonlinear-Programming-Advances/dp/0898716888" target="blank" >John Bett's book on optimal control</a>,
-		and a few websites.</p>
-	</div>
-	<div class="signature" > - Matthew Kelly</div>
-	<h2>Dynamics</h2>
-	<p>All trajectory methods can either be described as <b>shooting</b> methods or <b>simultaneous (collocation)</b> methods.
-		The key difference is that shooting methods use an explicit integration scheme,
-	where as simultaneous methods use an implicit integration scheme to solve the dynamics.</p>
-	<p> Simple shooting schemes might use Euler integration or the mid-point method, while fancy shooting schemes would use high-order Runge-Kutta methods.
-		Variable-order methods, such as Matlab's ode45, can also be used, but do so with caution: they can cause problems with the optimization solver.
-	This occurs when a change in the decision variables causes the integration method to add an extra integration step.</p>
-	<p> Simultaneous methods, also called collocation methods, use implicit integration schemes. Low-order schemes would be backwards-Euler or the trapazoid method.
-	High-order methods could include symplectic integrators or orthogonal quadrature.</p>
-	<p> As far as I can tell, there is no clear winner between the two schemes.
-	The most important thing is that the integration scheme be well matched to the dynamics. </p>
-	<h2>Discretization</h2>
-	<p> In general, all transcription methods represent a continuous trajectory using piece-wise polynomial interpolation.
-		There are exceptions, but we can ignore them for now. In this framework there are two parameters:
-	the number of polynomial segments, and the order of the interpolating polynomial.</p>
-	<p> One class of transcription methods, know as <b>h-methods</b>, use low-order polynomials for interpolation, and a large number of trajectory segments.
-		Methods such as direct transcription and direct collocation typically fall under this scheme, as well as some implementations of multiple shooting.
-	Convergence in a h-method is typically obtained by increasing the number of trajectory segments.</p>
-	<p> A second class of method, known as <b>p-methods</b>, use high-order polynomials for interpolation, and a small number of trajectory segments.
-	Orthogonal collocation methods fall into this category. Convergence in a p-method is typically obtained by increasing the order of the interpolating polynomial.</p>
-	<p> There is no sharp division between these two methods, but rather a continuous spectrum.
-		For example, the transcription program GPOPS II uses a hp-adaptive meshing method.
-		It uses an intermediate number of trajectory segments, and medium-order interpolating polynomials.
-	Convergence is obtained through increasing both the number of segments and the order of the polynomials, based on a special algorithm.</p>
-	<p> Which method is better? It depends on the problem. Even if the dynamics of the system are continuous,
-		it is possible to have a discontinuous solution to the problem - imagine a bang-bang controller.
-		If the underlying solution to the problem is analytic (smooth), then the a h-method will be superior.
-		If the solution has discontinuities, in any derivative, then a p-method is a better choice.
-	The papers by Anil Rao discuss these trade-offs in great deal.</p>
-	<h2>Decision Variables</h2>
-	<p> A decision variable is something that the optimization program can adjust to arrive at the desired solution.
-		In trajectory optimization, there are two types of decision variables.
-		The dynamics equations are differential equations in the <b>state</b> variables and algebraic equations in the <b>control</b> variables.
-		Unknown parameters can be thought of as control variables with a constraint that they must be constant.
-	An example of a state variable would the the position or velocity of a point-mass, while a control would be the force applied to the mass. </p>
-	<h2>Defect Matching</h2>
-	<p> All transcription methods enforce the dynamics by some sort of defect matching.
-		This can be done in two ways:
-		<b>integral methods</b> work by matching the state at the end-points of each trajectory segment,
-		while <b> derivative methods</b> work by matching derivatives at special points inside of each trajectory segment.
-	If the defect constraints are satisfied, then the trajectory satisfies the dynamics.</p>
-	<p> Integral methods match defects (differences) between the state at the end-points of each trajectory segment.
-		The first version of the state is the values of the current guess at the trajectory.
-		The second version of the state is obtained by integrating the dynamics of the interpolated states between the two end-points.
-		All shooting methods and some collocation methods use this type of defect constraint.
-		<p> Derivative methods match defects at the collocation points along each trajectory segment.
-			These points correspond to the roots of the underlying orthogonal polynomials, and may or may not include the end-points of the trajectory segment.
-			One version of the derivatives is obtained by analytically differentiating the interpolating polynomials.
-			The second version of the derivatives is obtained by evaluating the dynamics at each collocation point.
-		Some collocation methods use this type of defect constraint.</p>
-		<h2>Discontinuous Dynamics</h2>
-		<p> So far, we've assume that the dynamics function is continuous. While this makes the problem (a lot) easier, it is not true for all problem.
-			For example, I'm interested in walking robots. The dynamics of the system change whenever a foot makes or breaks contact with the ground.
-			There are two ways to deal with discontinuous dynamics. The first is called <b>through-contact optimization</b>,
-			and it is similar to the time-stepping physics engines found in most modern simulators. The second method I will call <b> phase-based optimization </b>,
-		and is similar to event-based simulation.</p>
-		<p> Through-contact optimization is relatively new, with similar methods being developed by Russ Tedrake and Emo Todorov.
-			The basic idea is to force all discontinuities into the decision (control) variables by adding constraints.
-			For example, consider a walking robot. The dynamics for the system are modeled as if the robot was floating in the air,
-			with some unknown contact forces acting on the feet. A constraint is added to ensure that the contact forces are zero when the foot is in the air.
-		The contact forces are then passed to the transcription method as control variables.</p>
-		<p> Phase-based optimization is the historical way to deal with discontinuous dynamics, and is implemented in GPOPS II.
-			The user breaks the problem up into several phases, each of which experiences continuous dynamics.
-			The user then defines a series of transitions between each continuous phase. We will once again use walking as an example.
-		The first phase would the configuration where both feet are on the ground, and the second phase would be when one foot is in the air. </p>
-		<p> Which is better? It depends on the problem. Through-contact optimization can solve for arbitrary transitions and contact times,
-			but it suffers from being slow due to the added decision variables. It also looses accuracy since the transitions must occur at a grid-point.
-		Phase-based optimization is fast and accurate, but it cannot handle arbitrary transitions.</p>
-	</body>
+<h1>Trajectory Optimization Terminology</h1>
+<br>
+<div class="navBlock"><a href="../../index.html" class="navLink">←
+Home</a><br>
+<a href="../../tutorials/index.html" class="navLink">←
+Tutorials</a><br></div>
+<div class="abstract">
+<p>In trying to learn trajectory optimization, I've found it
+difficult to understand the terminology. This is in part due to the
+complexity of the field, and in part due to conflicting information
+on the topic. I've organized this page by trying to look at
+different aspects that all methods have in common, and what the
+different options are. In general, all topics discussed here have
+to to with <b>transcription</b>, the process by which an optimal
+control problem is transformed into a constrained non-linear
+programming problem.</p>
+<p>My information comes from a variety of sources: journal papers
+(mostly either by <a href="http://vdol.mae.ufl.edu/" target=
+"blank">Anil Rao</a> or <a href=
+"https://groups.csail.mit.edu/locomotion/russt.html" target=
+"blank">Russ Tedrake</a>), the documentation for <a href=
+"http://www.gpops2.com/" target="blank">GPOPS II</a>, the source
+code of <a href="https://github.com/RobotLocomotion/drake/wiki"
+target="blank">Drake</a>, <a href=
+"https://www.edx.org/course/underactuated-robotics-mitx-6-832x"
+target="blank">video lectures</a> by Russ Tedrake, <a href=
+"http://www.amazon.com/Practical-Estimation-Nonlinear-Programming-Advances/dp/0898716888"
+target="blank">John Bett's book on optimal control</a>, and a few
+websites.</p>
+</div>
+<div class="signature">- Matthew Kelly</div>
+<h2>Dynamics</h2>
+<p>All trajectory methods can either be described as
+<b>shooting</b> methods or <b>simultaneous (collocation)</b>
+methods. The key difference is that shooting methods use an
+explicit integration scheme, where as simultaneous methods use an
+implicit integration scheme to solve the dynamics.</p>
+<p>Simple shooting schemes might use Euler integration or the
+mid-point method, while fancy shooting schemes would use high-order
+Runge-Kutta methods. Variable-order methods, such as Matlab's
+ode45, can also be used, but do so with caution: they can cause
+problems with the optimization solver. This occurs when a change in
+the decision variables causes the integration method to add an
+extra integration step.</p>
+<p>Simultaneous methods, also called collocation methods, use
+implicit integration schemes. Low-order schemes would be
+backwards-Euler or the trapazoid method. High-order methods could
+include symplectic integrators or orthogonal quadrature.</p>
+<p>As far as I can tell, there is no clear winner between the two
+schemes. The most important thing is that the integration scheme be
+well matched to the dynamics.</p>
+<h2>Discretization</h2>
+<p>In general, all transcription methods represent a continuous
+trajectory using piece-wise polynomial interpolation. There are
+exceptions, but we can ignore them for now. In this framework there
+are two parameters: the number of polynomial segments, and the
+order of the interpolating polynomial.</p>
+<p>One class of transcription methods, know as <b>h-methods</b>,
+use low-order polynomials for interpolation, and a large number of
+trajectory segments. Methods such as direct transcription and
+direct collocation typically fall under this scheme, as well as
+some implementations of multiple shooting. Convergence in a
+h-method is typically obtained by increasing the number of
+trajectory segments.</p>
+<p>A second class of method, known as <b>p-methods</b>, use
+high-order polynomials for interpolation, and a small number of
+trajectory segments. Orthogonal collocation methods fall into this
+category. Convergence in a p-method is typically obtained by
+increasing the order of the interpolating polynomial.</p>
+<p>There is no sharp division between these two methods, but rather
+a continuous spectrum. For example, the transcription program GPOPS
+II uses a hp-adaptive meshing method. It uses an intermediate
+number of trajectory segments, and medium-order interpolating
+polynomials. Convergence is obtained through increasing both the
+number of segments and the order of the polynomials, based on a
+special algorithm.</p>
+<p>Which method is better? It depends on the problem. Even if the
+dynamics of the system are continuous, it is possible to have a
+discontinuous solution to the problem - imagine a bang-bang
+controller. If the underlying solution to the problem is analytic
+(smooth), then the a h-method will be superior. If the solution has
+discontinuities, in any derivative, then a p-method is a better
+choice. The papers by Anil Rao discuss these trade-offs in great
+deal.</p>
+<h2>Decision Variables</h2>
+<p>A decision variable is something that the optimization program
+can adjust to arrive at the desired solution. In trajectory
+optimization, there are two types of decision variables. The
+dynamics equations are differential equations in the <b>state</b>
+variables and algebraic equations in the <b>control</b> variables.
+Unknown parameters can be thought of as control variables with a
+constraint that they must be constant. An example of a state
+variable would the the position or velocity of a point-mass, while
+a control would be the force applied to the mass.</p>
+<h2>Defect Matching</h2>
+<p>All transcription methods enforce the dynamics by some sort of
+defect matching. This can be done in two ways: <b>integral
+methods</b> work by matching the state at the end-points of each
+trajectory segment, while <b>derivative methods</b> work by
+matching derivatives at special points inside of each trajectory
+segment. If the defect constraints are satisfied, then the
+trajectory satisfies the dynamics.</p>
+<p>Integral methods match defects (differences) between the state
+at the end-points of each trajectory segment. The first version of
+the state is the values of the current guess at the trajectory. The
+second version of the state is obtained by integrating the dynamics
+of the interpolated states between the two end-points. All shooting
+methods and some collocation methods use this type of defect
+constraint.</p>
+<p>Derivative methods match defects at the collocation points along
+each trajectory segment. These points correspond to the roots of
+the underlying orthogonal polynomials, and may or may not include
+the end-points of the trajectory segment. One version of the
+derivatives is obtained by analytically differentiating the
+interpolating polynomials. The second version of the derivatives is
+obtained by evaluating the dynamics at each collocation point. Some
+collocation methods use this type of defect constraint.</p>
+<h2>Discontinuous Dynamics</h2>
+<p>So far, we've assume that the dynamics function is continuous.
+While this makes the problem (a lot) easier, it is not true for all
+problem. For example, I'm interested in walking robots. The
+dynamics of the system change whenever a foot makes or breaks
+contact with the ground. There are two ways to deal with
+discontinuous dynamics. The first is called <b>through-contact
+optimization</b>, and it is similar to the time-stepping physics
+engines found in most modern simulators. The second method I will
+call <b>phase-based optimization</b> , and is similar to
+event-based simulation.</p>
+<p>Through-contact optimization is relatively new, with similar
+methods being developed by Russ Tedrake and Emo Todorov. The basic
+idea is to force all discontinuities into the decision (control)
+variables by adding constraints. For example, consider a walking
+robot. The dynamics for the system are modeled as if the robot was
+floating in the air, with some unknown contact forces acting on the
+feet. A constraint is added to ensure that the contact forces are
+zero when the foot is in the air. The contact forces are then
+passed to the transcription method as control variables.</p>
+<p>Phase-based optimization is the historical way to deal with
+discontinuous dynamics, and is implemented in GPOPS II. The user
+breaks the problem up into several phases, each of which
+experiences continuous dynamics. The user then defines a series of
+transitions between each continuous phase. We will once again use
+walking as an example. The first phase would the configuration
+where both feet are on the ground, and the second phase would be
+when one foot is in the air.</p>
+<p>Which is better? It depends on the problem. Through-contact
+optimization can solve for arbitrary transitions and contact times,
+but it suffers from being slow due to the added decision variables.
+It also looses accuracy since the transitions must occur at a
+grid-point. Phase-based optimization is fast and accurate, but it
+cannot handle arbitrary transitions.</p>
+</body>
+</html>
