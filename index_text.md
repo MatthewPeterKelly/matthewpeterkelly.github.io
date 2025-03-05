@@ -12,7 +12,8 @@ More recently, I led the effort to port our control software to the electric Atl
 
 ### Rethink Robotics: 2016-2018
 
-Previously, I was at Rethink Robotics, where I developed control and trajectory generation software for their Sawyer robot.
+At Rethink Robotics I developed the software that generates whole-robot trajectories for Sawyer, focusing on minimum-time trajectories with tight kinematic constraints, enabling the robot to quickly and smoothly execute user-defined tasks.
+
 
 ## Academic
 
