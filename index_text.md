@@ -2,11 +2,11 @@
 
 ### Boston Dynamics: 2018 - Present
 
-I am a robotics engineer at Boston Dynamics, where I write control software for the [Atlas humanoid](https://www.bostondynamics.com/atlas) robot.
+I am a robotics engineer at Boston Dynamics, where I write realtime control software in C++ for the [Atlas humanoid](https://www.bostondynamics.com/atlas) robot.
 
-I am on the team that implemented the whole-body model-predictive control architecture that enabled the hydraulic Atlas to do parkour ([Atlas | Partners in Parkour](https://www.youtube.com/watch?v=tF4DML7FIWk), [Atlas Gets a Grip](https://www.youtube.com/watch?v=-e1_QhJ1EhQ)).
+During my first few years at Boston Dynamics I was on the team that implemented the whole-body model-predictive controller that enabled the hydraulic Atlas to do parkour ([Atlas | Partners in Parkour](https://www.youtube.com/watch?v=tF4DML7FIWk), [Atlas Gets a Grip](https://www.youtube.com/watch?v=-e1_QhJ1EhQ)).
 
-More recently I've been focused on the broader control software architecture, upgrading and modernizing our control infrastructure to run on the fully electric Atlas humanoid robot:
+More recently, I led the effort to port our control software to the electric Atlas robot, including extensive hardware experiments on the prototype robot and actuators. As part of this project we did a ground-up redesign for large sections the control software architecture, specifically focusing on using modern best-practices to produce robust and maintainable software that is easy to test. This architecture is now used by the entire Atlas controls team and runs the fully electric Atlas robot:
 [Atlas Goes Hands On](https://www.youtube.com/watch?v=F_7IPm7f1vI).
 
 
