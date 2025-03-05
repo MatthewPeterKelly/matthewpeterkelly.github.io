@@ -2,13 +2,13 @@ body {
      width: 1000px;
      margin: 0 auto;
  }
- 
+
  a {
      cursor: pointer;
      word-wrap: break-word;
      text-decoration: underline;
  }
- 
+
  .abstract {
      font: 100 16px Helvetica, sans-serif;
      margin-left: 300px;
@@ -17,8 +17,8 @@ body {
      margin-bottom: 50px;
 }
 .abstract p{
-  margin-left: 0px; 
-  margin-right: 0px; 
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 .navLink {
@@ -26,7 +26,7 @@ body {
      margin-left: 100px;
      text-decoration: none;
 }
- 
+
 .navBlock {
     margin-top: -30px;
 }
@@ -41,8 +41,8 @@ body {
  .signature {
      font: 400 24px 'Great Vibes', 'Merienda One', Helvetica, sans-serif;
      text-align: right;
-     margin-right: 150px; 
-     margin-top: -35px; 
+     margin-right: 150px;
+     margin-top: -35px;
  }
 
  img {
@@ -69,7 +69,7 @@ iframe {
  .clickable {
      cursor: pointer;
  }
- 
+
  h1 {
      font: 400 64px 'Great Vibes', 'Merienda One', Helvetica, sans-serif;
      text-align: center;
@@ -82,11 +82,11 @@ iframe {
     margin-top: 30px;
     margin-bottom: 10px;
  }
- 
+
 h3 {
      font: 400 20px 'Merienda One', Helvetica, sans-serif;
      text-align: left;
-    margin-left: 150px;
+    margin-left: 120px;
  }
 
  h4 {
@@ -101,7 +101,7 @@ h3 {
      margin-left: 150px;
      margin-right: 150px;
  }
- 
+
  ul {
      font: 100 16px Helvetica, sans-serif;
      margin-left: 150px;
