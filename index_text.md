@@ -2,9 +2,9 @@
 
 ### Boston Dynamics: 2018 - Present
 
-I am a controls engineer at Boston Dynamics, where I work with the [Atlas humanoid](https://www.bostondynamics.com/atlas) robot.
+I am a robotics engineer at Boston Dynamics, where I write control software for the [Atlas humanoid](https://www.bostondynamics.com/atlas) robot.
 
-I was on the team that implemented the whole-body model-predictive control architecture that enabled the hydraulic Atlas to do parkour ([Atlas | Partners in Parkour](https://www.youtube.com/watch?v=tF4DML7FIWk), [Atlas Gets a Grip](https://www.youtube.com/watch?v=-e1_QhJ1EhQ)).
+I am on the team that implemented the whole-body model-predictive control architecture that enabled the hydraulic Atlas to do parkour ([Atlas | Partners in Parkour](https://www.youtube.com/watch?v=tF4DML7FIWk), [Atlas Gets a Grip](https://www.youtube.com/watch?v=-e1_QhJ1EhQ)).
 
 More recently I've been focused on the broader control software architecture, upgrading and modernizing our control infrastructure to run on the fully electric Atlas humanoid robot:
 [Atlas Goes Hands On](https://www.youtube.com/watch?v=F_7IPm7f1vI).
@@ -32,4 +32,4 @@ I completed my B.S. in Mechanical Engineering at Tufts University in 2011, along
 
 I grew up in a small town near the Catskill Mountains in New York and have lived in various places around the northeast USA since then. Now I live outside of Boston with my wife and our young children.
 
-I'm interested in gardening, hiking, cooking, woodworking, contra dancing, and raising chickens.
+I'm interested in gardening, hiking, cooking, woodworking, and contra dancing.
