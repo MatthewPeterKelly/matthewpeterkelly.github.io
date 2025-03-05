@@ -32,4 +32,8 @@ I completed my B.S. in Mechanical Engineering at Tufts University in 2011, along
 
 I grew up in a small town near the Catskill Mountains in New York and have lived in various places around the northeast USA since then. Now I live outside of Boston with my wife and our young children.
 
-I'm interested in gardening, hiking, cooking, woodworking, and contra dancing.
+Carpentry and woodworking has always been a hobby of mine -- I designed and built two different chicken coops (one has a full garden on the roof!) and a greenhouse from slavaged windows. On the wood lathe I've created ~100 toy tops and many bowls. I've also built several tables and bookshelves. One particularily interesting project was building a [trebuchet with a one ton counterweight](https://matthewpeterkelly.wordpress.com/2009/08/17/trebuchet-construction/).
+
+I'm also interested in gardening, hiking, cooking, and contra dancing.
+
+Recently I've become interested in the Rust programming launguage, which I'm teaching myself by writing a high-performance library for rendering fractals. It includes an "explore mode", which renders the images live inside of a GUI that allows the user to pan and zoom with keyboard and mouse controls.
