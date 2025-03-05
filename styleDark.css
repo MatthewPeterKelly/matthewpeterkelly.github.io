@@ -3,9 +3,9 @@
 body {
       background: #222222;
  }
- 
+
 a {
-    color: #999999;
+    color: #b9b9b9;
 }
 
   a:hover {
@@ -16,16 +16,15 @@ a {
      color: #114488;
  }
 
- 
+
  h1 {
-     color: #999999;
+    color: #b9b9b9;
  }
 
  h2, h3, h4, .signature, .navLink, .abstract{
-     color: #888888;
+    color: #b9b9b9;
  }
- 
+
  p, ul {
-     color: #888888;
+     color: #b9b9b9;
  }
- 
